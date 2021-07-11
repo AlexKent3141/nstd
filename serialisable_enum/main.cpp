@@ -1,7 +1,9 @@
 #include "serialisable_enum.h"
 
-#include <string>
 #include <iostream>
+#include <string>
+
+#include <cassert>
 
 /* Equivalent non-macro code
 struct Fish;
@@ -52,6 +54,8 @@ int main()
 
   Fish::value dolphin = Fish::value(10);
   std::cout << dolphin << std::endl;
+
+  assert(dolphin == Fish::Dolphin);
 
   return 0;
 }

@@ -23,6 +23,10 @@ public:
     explicit value(int);
     inline explicit operator int() const { return id_; }
 
+    // Comparison operators.
+    bool operator==(const value&) const;
+    bool operator!=(const value&) const;
+
     inline std::string to_string() const { return repr_; }
 
   private:
@@ -79,6 +83,20 @@ serialisable_enum<EnumType>::value::value(
   {
     throw std::exception();
   }
+}
+
+template <typename EnumType>
+bool serialisable_enum<EnumType>::value::operator==(
+  const serialisable_enum<EnumType>::value& other) const
+{
+  return id_ == other.id_ && repr_ == other.repr_;
+}
+
+template <typename EnumType>
+bool serialisable_enum<EnumType>::value::operator!=(
+  const serialisable_enum<EnumType>::value& other) const
+{
+  return !(*this == other);
 }
 
 template <typename EnumType>
