@@ -15,3 +15,6 @@ Implemented? :heavy_check_mark:
 ### Parsing
 * Provide a nice way to split strings
 	* Implemented? :x:
+
+## Contributing
+I would be interested in hearing about more functionality that's "missing" from the standard library - feel free to raise an MR to add items to this README. I would also appreciate suggestions to improve existing implementations, or even completely new implementations to evaluate.
