@@ -3,16 +3,17 @@
 #include <string>
 #include <iostream>
 
-using namespace nstd;
-
 /* Equivalent non-macro code
 struct Fish;
 
+// Need to explicitly provide a specialisation of the values cache
+//  for the new enum type.
 template <>
-std::vector<serialisable_enum<Fish>::value> serialisable_enum<Fish>::str_values_ =
-  std::vector<serialisable_enum<Fish>::value>();
+std::vector<nstd::serialisable_enum<Fish>::value>
+  nstd::serialisable_enum<Fish>::str_values_ =
+    std::vector<nstd::serialisable_enum<Fish>::value>();
 
-struct Fish : public serialisable_enum<Fish>
+struct Fish : public nstd::serialisable_enum<Fish>
 {
   static inline Fish::value Minnow = Fish::value("minnow", 0);
   static inline Fish::value Shark = Fish::value("shark");

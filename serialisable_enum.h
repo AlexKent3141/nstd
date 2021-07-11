@@ -102,10 +102,10 @@ typename serialisable_enum<EnumType>::value
 #define SERIALISABLE_ENUM(TYPE) \
   struct TYPE; \
   template <> \
-  std::vector<serialisable_enum<TYPE>::value> \
-    serialisable_enum<TYPE>::str_values_ = \
-      std::vector<serialisable_enum<TYPE>::value>(); \
-  struct TYPE : public serialisable_enum<TYPE> \
+  std::vector<nstd::serialisable_enum<TYPE>::value> \
+    nstd::serialisable_enum<TYPE>::str_values_ = \
+      std::vector<nstd::serialisable_enum<TYPE>::value>(); \
+  struct TYPE : public nstd::serialisable_enum<TYPE> \
   {
 
 #define SERIALISABLE_ENUM_VALUE(TYPE, NAME, REPR) \
