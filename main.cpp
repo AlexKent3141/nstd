@@ -5,6 +5,7 @@
 
 using namespace nstd;
 
+/* Equivalent non-macro code
 struct Fish;
 
 template <>
@@ -19,6 +20,15 @@ struct Fish : public serialisable_enum<Fish>
   static inline Fish::value Barracuda = Fish::value("barracuda", 1);
   static inline Fish::value Tuna = Fish::value("tuna");
 };
+*/
+
+SERIALISABLE_ENUM(Fish)
+  SERIALISABLE_ENUM_VALUE_ID(Fish, Minnow, minnow, 0)
+  SERIALISABLE_ENUM_VALUE(Fish, Shark, shark)
+  SERIALISABLE_ENUM_VALUE_ID(Fish, Dolphin, dolphin, 10)
+  SERIALISABLE_ENUM_VALUE_ID(Fish, Barracuda, barracuda, 1)
+  SERIALISABLE_ENUM_VALUE(Fish, Tuna, tuna)
+SERIALISABLE_ENUM_END
 
 std::ostream& operator<<(std::ostream& os, const Fish::value& fish)
 {

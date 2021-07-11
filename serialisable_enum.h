@@ -99,4 +99,21 @@ typename serialisable_enum<EnumType>::value
 
 } // namespace nstd
 
+#define SERIALISABLE_ENUM(TYPE) \
+  struct TYPE; \
+  template <> \
+  std::vector<serialisable_enum<TYPE>::value> \
+    serialisable_enum<TYPE>::str_values_ = \
+      std::vector<serialisable_enum<TYPE>::value>(); \
+  struct TYPE : public serialisable_enum<TYPE> \
+  {
+
+#define SERIALISABLE_ENUM_VALUE(TYPE, NAME, REPR) \
+  static inline TYPE::value NAME = TYPE::value(#REPR);
+
+#define SERIALISABLE_ENUM_VALUE_ID(TYPE, NAME, REPR, ID) \
+  static inline TYPE::value NAME = TYPE::value(#REPR, ID);
+
+#define SERIALISABLE_ENUM_END };
+
 #endif // __SERIALISABLE_ENUM_INCLUDED__
